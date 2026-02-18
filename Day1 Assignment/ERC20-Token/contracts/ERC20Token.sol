@@ -62,9 +62,9 @@ function balanceOf(address _address) public view returns(uint){
 }
 
 
-function approve(address _owner, address _spender, uint _amount) public returns(bool success){
-allowances[_owner][_spender] = _amount;
-emit Approval(_owner, _spender, _amount);
+function approve(address _spender, uint _amount) public returns(bool success){
+allowances[msg.sender][_spender] = _amount;
+emit Approval(msg.sender, _spender, _amount);
 return true;
 }
 

@@ -13,8 +13,8 @@ event DepositedMTK(address indexed sender, uint256 indexed amount);
     event WithdrewEther(address indexed receiver, uint256 indexed amount);
      event WithdrewMTK(address indexed receiver, uint256 indexed amount);
 
-constructor(){
-    erc20Token = new ERC20Token("MyToken", "MTK", 18);
+constructor(address _erc20TokenAddress){
+    erc20Token = ERC20Token(_erc20TokenAddress);
 }
 
 function depositEther()external payable {
@@ -66,5 +66,9 @@ function withdrawEther(uint256 _amount) external {
 
     function getContractEtherBalance()external view returns(uint){
         return address(this).balance;
+    }
+
+    function getContractMTKBalance()external view returns(uint){
+        return erc20Token.balanceOf(address(this));
     }
 }
