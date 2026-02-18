@@ -55,4 +55,20 @@ function withdrawEther(uint256 _amount) external {
         erc20Token.transfer(msg.sender, _amount);
         emit WithdrewMTK(msg.sender, _amount);
     }
+
+    function getMyEtherBalance()external view returns(uint){
+        return balancesEther[msg.sender];
+    }
+
+    function getMyMTKBalance()external view returns(uint){
+        return balancesMTK[msg.sender];
+    }
+
+    function getContractEtherBalance()external view returns(uint){
+        return address(this).balance;
+    }
+
+    function getContractMTKBalance()external view returns(uint){
+        return erc20Token.balanceOf(address(this));
+    }
 }
