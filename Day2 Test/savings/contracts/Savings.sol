@@ -67,8 +67,4 @@ function withdrawEther(uint256 _amount) external {
     function getContractEtherBalance()external view returns(uint){
         return address(this).balance;
     }
-
-    function getContractMTKBalance()external view returns(uint){
-        return erc20Token.balanceOf(address(this));
-    }
 }
